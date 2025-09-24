@@ -12,22 +12,50 @@
 
 import random
 
-print("  Bem-vindo ao Cadastro da Doceria!  ")
+print("Bem-vindo ao Cadastro da Doceria!")
 
-clientes={}
-import os 
+clientes = {}
 
 while True:
-    valor_receber_nome = input("Qual o seu nome?")
-    if valor_receber_nome == "sair":
-        print("Até breve")
-        break 
-    valor_receber_telefone = input("Qual o seu telefone?")
-    valor_receber_email = input("Qual o seu email?")
-    print("Obrigado pelo o cadastro")
+    nome = input("Nome (ou 'sair'): ")
+    if nome.lower() == "sair":
+        break
+    telefone = input("Telefone: ")
+    email = input("Email: ")
+    clientes[nome] = (telefone, email)
 
+if clientes:
+    vencedor = random.choice(list(clientes))
+    print(f"Vencedor: {vencedor}")
+    for nome, (telefone, email) in clientes.items():
+        print(f"{nome}: {telefone}, {email}")
+else:
+    print("Nenhum cliente.")
 
-vencedor = random.choice(valor_receber_nome)
-print ("o vencedor é " + vencedor)
+============================================
+Correção
+============================================
+
+import random
+
+print("="*40)
+print("Bem-vindo ao Cadastro da Doceria!".center(40))
+print("="*40)
+
+clientes = {}
+
+while True:
+    nome = input("Nome (ou 'sair'): ")
+    if nome.lower() == "sair":
+        break
+    telefone = input("Telefone: ")
+    email = input("Email: ")
+    clientes[nome] = (telefone, email)
+    clientes.append(clientes)
+    print("\033[31mCliente Adicionado com Sucesso!\033[m")
+
+    cliente_sorteado =choice(clientes) # choice escolhe aleatoriamente dentre da lista de valores
+    print(f'Parabéns {cliente_sorteado[nome]} Você foi sorteado!')
+
 
 
